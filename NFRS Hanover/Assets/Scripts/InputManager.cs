@@ -15,7 +15,8 @@ public class InputManager : MonoBehaviour
 
   // Player object
   private GameObject player;
-  private AudioSource audio;
+  [SerializeField] private bool throttle = true;
+  //private AudioSource audio;
 
   // Start is called before the first frame update
   void Start()
@@ -46,27 +47,27 @@ public class InputManager : MonoBehaviour
 
     if (verticalMovement > 0.01)
     {
-      this.Jump.Execute(this.player);
+      this.Jump.Execute(this.player, this.throttle);
     }
     if (verticalMovement < -0.01)
     {
-      this.MoveDown.Execute(this.player);
+      this.MoveDown.Execute(this.player, this.throttle);
     }
     if (horizontalMovement > 0.01)
     {
-      this.MoveRight.Execute(this.player, horizontalMovement);
+      this.MoveRight.Execute(this.player, horizontalMovement, this.throttle);
     }
     if (horizontalMovement < -0.01)
     {
-      this.MoveLeft.Execute(this.player, -1 * horizontalMovement);
+      this.MoveLeft.Execute(this.player, -1 * horizontalMovement, this.throttle);
     }
     if (Input.GetButtonDown("Pause"))
     {
-      this.Pause.Execute(this.gameObject);
+      this.Pause.Execute(this.gameObject, this.throttle);
     }
-    if (Input.GetKey("a") || Input.GetKey("d"))
+    /*if (Input.GetKey("a") || Input.GetKey("d"))
     {
-      audio.Play();
-    }
+      GetComponent<AudioSource>().Play();
+    }*/
   }
 }

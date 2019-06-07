@@ -20,7 +20,7 @@ namespace CommandPattern
             return currentState;
         }
 
-        public void Execute(GameObject gameObject)
+        public void Execute(GameObject gameObject, bool throttle)
         {
             switch(currentState) {
                 case GameStates.Playing:

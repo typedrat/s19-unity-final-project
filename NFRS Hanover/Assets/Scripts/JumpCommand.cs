@@ -15,12 +15,16 @@ namespace CommandPattern
             gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PauseCommand>();
         }
 
-        public void Execute(GameObject player)
+        public void Execute(GameObject player, bool throttle)
         {
             if (gm.GetCurrentState() == PauseCommand.GameStates.Playing)
             {
-                // Jump if not already jumping
-                player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 20f));
+                var rat = player.GetComponent<Rigidbody2D>();
+                if(!throttle || (throttle && rat.velocity.y < 5))
+                {
+                    // Jump if not already jumping
+                    rat.AddForce(new Vector2(0f, 20f));
+                }
             }
         }
     }
