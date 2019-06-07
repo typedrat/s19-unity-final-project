@@ -14,12 +14,22 @@ namespace CommandPattern
     /
     /   Axis will always be a positive floating point number from 0 to 1.
     */
+
     public class MoveRightCommand : MonoBehaviour, IAxisCommand
     {
+        private PauseCommand gm;
+
+        void Start() {
+            gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PauseCommand>();
+        }
+
         public void Execute(GameObject player, float axis)
         {
-            // MoveRightCommand
-            player.GetComponent<Rigidbody2D>().AddForce(new Vector2(20f, 0f) * axis);
+            if (gm.GetCurrentState() == PauseCommand.GameStates.Playing)
+            {
+                // MoveRightCommand
+                player.GetComponent<Rigidbody2D>().AddForce(new Vector2(20f, 0f) * axis);
+            }
         }
     }
 }

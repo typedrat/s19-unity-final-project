@@ -15,10 +15,19 @@ namespace CommandPattern
     */
     public class MoveLeftCommand : MonoBehaviour, IAxisCommand
     {
+
+        private PauseCommand gm;
+
+        void Start() {
+            gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PauseCommand>();
+        }
         public void Execute(GameObject player, float axis)
         {
-            // MoveLeftCommand
-            player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20f, 0f) * axis);
+            if (gm.GetCurrentState() == PauseCommand.GameStates.Playing)
+            {
+                // MoveLeftCommand
+                player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20f, 0f) * axis);
+            }
         }
     }
 }
