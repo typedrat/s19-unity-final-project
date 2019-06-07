@@ -19,4 +19,6 @@ public class RobotController : MonoBehaviour
         var animator = this.gameObject.GetComponent<Animator>();
         animator.SetFloat("Random", rnd.Next(0,12));
     }
+
+    
 }

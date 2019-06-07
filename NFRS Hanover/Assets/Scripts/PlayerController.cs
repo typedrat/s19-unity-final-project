@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col)
-    {
+    {   
+        this.GetComponent<Health>().TakeDamage(10);
         Debug.Log("OnCollisionEnter2D");
     }
 }
