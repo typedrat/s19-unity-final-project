@@ -9,26 +9,23 @@ namespace CommandPattern
     public class JumpCommand : MonoBehaviour, ICommand
     {
 
-        [SerializeField]
-        private AudioClip JumpClip;
-        private AudioSource Audio;
+        private PauseCommand gm;
 
         void Start() {
-            Audio = GetComponent<AudioSource>();
-            JumpClip = (AudioClip)Resources.Load("Audio/ratjump.mp3");
+            gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PauseCommand>();
         }
 
         public void Execute(GameObject player, bool throttle)
         {
-            Audio.PlayOneShot(JumpClip);
-            var rat = player.GetComponent<Rigidbody2D>();
-                
-            if(!throttle || (throttle && rat.velocity.y < 5))
+            if (gm.GetCurrentState() == PauseCommand.GameStates.Playing)
             {
-                // Jump if not already jumping
-                rat.AddForce(new Vector2(0f, 20f));
+                var rat = player.GetComponent<Rigidbody2D>();
+                if(!throttle || (throttle && rat.velocity.y < 5))
+                {
+                    // Jump if not already jumping
+                    rat.AddForce(new Vector2(0f, 20f));
+                }
             }
         }
     }
 }
-
