@@ -31,7 +31,7 @@ public class InputManager : MonoBehaviour
     {
         float horizontalMovement = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButton("Jump")) {
             this.Jump.Execute(this.gameObject);
         }
         if (horizontalMovement > 0.01) {
