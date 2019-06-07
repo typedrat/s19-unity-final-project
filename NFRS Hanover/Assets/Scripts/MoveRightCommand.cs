@@ -18,6 +18,7 @@ namespace CommandPattern
     public class MoveRightCommand : MonoBehaviour, IAxisCommand
     {
         private PauseCommand gm;
+        private AudioSource audio;
 
         void Start() {
             gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PauseCommand>();
@@ -30,6 +31,7 @@ namespace CommandPattern
                 // MoveRightCommand
                 player.GetComponent<Rigidbody2D>().AddForce(new Vector2(20f, 0f) * axis);
             }
-        }
-    }
+            audio.Play();
+            }
+  }
 }

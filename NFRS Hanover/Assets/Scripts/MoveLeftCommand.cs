@@ -17,10 +17,12 @@ namespace CommandPattern
     {
 
         private PauseCommand gm;
+        private AudioSource audio;
 
         void Start() {
-            gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PauseCommand>();
+          gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PauseCommand>();
         }
+
         public void Execute(GameObject player, float axis)
         {
             if (gm.GetCurrentState() == PauseCommand.GameStates.Playing)
@@ -28,6 +30,7 @@ namespace CommandPattern
                 // MoveLeftCommand
                 player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20f, 0f) * axis);
             }
+            audio.Play();
         }
     }
 }
