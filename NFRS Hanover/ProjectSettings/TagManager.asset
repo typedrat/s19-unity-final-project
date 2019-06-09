@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - UI
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -38,6 +40,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Space
+    uniqueID: 1645334013
+    locked: 0
+  - name: Stars
+    uniqueID: 2477366813
+    locked: 0
+  - name: Walls
+    uniqueID: 656034125
+    locked: 0
+  - name: Others
+    uniqueID: 3971565681
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
