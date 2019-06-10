@@ -7,6 +7,7 @@ namespace Hanover.Physics
     public class PlayerPhysics : MonoBehaviour
     {
         private Rigidbody2D Physics;
+        private SpriteRenderer Renderer;
 
         [SerializeField]
         private bool _GravEnabled = true;
@@ -56,6 +57,7 @@ namespace Hanover.Physics
         void Start()
         {
             Physics = gameObject.GetComponent<Rigidbody2D>();
+            Renderer = gameObject.GetComponent<SpriteRenderer>();
         }
 
         void Update()
@@ -64,6 +66,8 @@ namespace Hanover.Physics
             {
                 Physics.velocity = Physics.velocity.normalized * VelocityCap;
             }
+
+            Renderer.flipX = Physics.velocity.x > 0.0f;
         }
 
         public void GroundControl(Vector2 axes)
