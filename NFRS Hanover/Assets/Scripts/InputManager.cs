@@ -15,7 +15,7 @@ public class InputManager : MonoBehaviour
 
   // Player object
   private GameObject player;
-  [SerializeField] private bool throttle = true;
+  [SerializeField] private int throttle = 5;
   //private AudioSource audio;
 
   // Start is called before the first frame update

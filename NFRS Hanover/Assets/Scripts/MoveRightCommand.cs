@@ -24,7 +24,7 @@ namespace CommandPattern
             gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PauseCommand>();
         }
 
-        public void Execute(GameObject player, float axis, bool throttle)
+        public void Execute(GameObject player, float axis, int throttle)
         {
             if (gm.GetCurrentState() == PauseCommand.GameStates.Playing)
             {
@@ -32,7 +32,7 @@ namespace CommandPattern
                 //player.GetComponent<Rigidbody2D>().AddForce(new Vector2(20f, 0f) * axis);
                 var rat = player.GetComponent<Rigidbody2D>();
                 player.transform.rotation = Quaternion.identity;
-                if(!throttle || (throttle && rat.velocity.x < 5))
+                if(rat.velocity.x < throttle)
                 {
                     // Jump if not already jumping
                     rat.AddForce(new Vector2(20f, 0f) * axis);

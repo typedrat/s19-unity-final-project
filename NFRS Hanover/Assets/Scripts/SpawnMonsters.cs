@@ -12,31 +12,40 @@ public class SpawnMonsters : MonoBehaviour
     [SerializeField] private int SpawnRate = 1000;
 
     private float time = 0;
+    private float old_pos;
+
+    void Start()
+    {
+        this.old_pos = Player.transform.position.x;
+    }
 
     // Update is called once per frame
     void Update()
     {
         this.time += Time.deltaTime;
-        //Debug.Log(time);
+        if(this.old_pos + 5 <= Player.transform.position.x)
+        {
+            this.old_pos = Player.transform.position.x;
 
-        if(time >= SpawnRate){
-            var next_spawn = Random.Range(0,3);
-            Debug.Log(next_spawn);
-            if(next_spawn == 0)
-            {
-                Instantiate(this.Flea, this.Player.transform.position + new Vector3(Random.Range(20,100), 0, 0), Quaternion.identity);
-                Debug.Log("FLEA");
-            } else if(next_spawn == 1)
-            {
-                Instantiate(this.Robot, this.Player.transform.position + new Vector3(Random.Range(20,100), 0, 0), Quaternion.identity);
-                Debug.Log("ROBOT");
-            } else
-            {
-                Instantiate(this.Laser, this.Player.transform.position + new Vector3(Random.Range(20,100), 0, 0), Quaternion.identity);
-                Debug.Log("LASER");
+
+            if(this.time >= SpawnRate){
+                //var next_spawn = Random.Range(0,3);
+                var next_spawn = 2;
+                if(next_spawn == 0)
+                {
+                    Instantiate(this.Flea, this.Player.transform.position + new Vector3(Random.Range(20,100), 0, 0), Quaternion.identity);
+                    Debug.Log("FLEA");
+                } else if(next_spawn == 1)
+                {
+                    Instantiate(this.Robot, this.Player.transform.position + new Vector3(Random.Range(20,100), 0, 0), Quaternion.identity);
+                    Debug.Log("ROBOT");
+                } else
+                {
+                    Instantiate(this.Laser, new Vector3(Random.Range(20,100) + this.Player.transform.position.x, 7, 0), Quaternion.identity);
+                    Debug.Log("LASER");
+                }
+                this.time = 0;
             }
-            this.time = 0;
         }
-
     }
 }
