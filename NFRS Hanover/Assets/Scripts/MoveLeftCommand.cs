@@ -36,6 +36,7 @@ namespace CommandPattern
                 {
                     // Jump if not already jumping
                     rat.AddForce(new Vector2(-20f, 0f) * axis);
+                    Debug.Log(rat.velocity);
                 }
             }
             //GetComponent<AudioSource>().Play();
