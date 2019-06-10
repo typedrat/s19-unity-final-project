@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Space
+    uniqueID: 799445693
+    locked: 0
+  - name: Objects
+    uniqueID: 3765048385
+    locked: 0
+  - name: Walls
+    uniqueID: 1835565571
+    locked: 0
+  - name: Stars
+    uniqueID: 181606845
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
