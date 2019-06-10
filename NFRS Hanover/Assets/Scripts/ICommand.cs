@@ -1,16 +1,17 @@
 using UnityEngine;
+using Hanover.Physics;
 
-namespace CommandPattern
+namespace Hanover.CommandPattern
 {
     // Interface for axis inputs (i.e. moving left and right)
-    public interface IAxisCommand
+    public interface IPhysicsCommand
     {
-        void Execute(GameObject player, float axis, bool throttle);
+        void Execute(GameObject player, Vector2 axes, PlayerPhysics physics);
     }
 
     // General command pattern interface
     public interface ICommand
     {
-        void Execute(GameObject player, bool throttle);
+        void Execute(GameObject target);
     }
 }

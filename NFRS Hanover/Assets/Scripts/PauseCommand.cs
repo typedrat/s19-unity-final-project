@@ -1,7 +1,7 @@
 using UnityEngine;
-using CommandPattern;
+using Hanover.CommandPattern;
 
-namespace CommandPattern
+namespace Hanover.CommandPattern
 {
     public class PauseCommand : MonoBehaviour, ICommand
     {
@@ -20,7 +20,7 @@ namespace CommandPattern
             return currentState;
         }
 
-        public void Execute(GameObject gameObject, bool throttle)
+        public void Execute(GameObject gameObject)
         {
             switch(currentState) {
                 case GameStates.Playing:

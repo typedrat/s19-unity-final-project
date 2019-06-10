@@ -1,73 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Hanover.CommandPattern;
+using Hanover.Physics;
 using UnityEngine;
-
-using CommandPattern;
 
 public class InputManager : MonoBehaviour
 {
-  // Command Scripts
-  private IAxisCommand MoveLeft;
-  private IAxisCommand MoveRight;
-  private ICommand Jump;
-  private ICommand MoveDown;
-  private ICommand Pause;
+    // Command Scripts
+    private IPhysicsCommand GroundControl;
+    private IPhysicsCommand AirControl;
+    private IPhysicsCommand GravityToggle;
+    private ICommand Pause;
 
-  // Player object
-  private GameObject player;
-  [SerializeField] private bool throttle = true;
-  //private AudioSource audio;
+    // Player object
+    private GameObject Player;
 
-  // Start is called before the first frame update
-  void Start()
-  {
-    player = GameObject.FindGameObjectWithTag("Player");
+    private bool IsPaused = false;
+    private PlayerPhysics Physics;
 
-    // Add the necessary components to the player
-    this.player.AddComponent<MoveLeftCommand>();
-    this.player.AddComponent<MoveRightCommand>();
-    this.player.AddComponent<JumpCommand>();
-    this.player.AddComponent<MoveDownCommand>();
-    this.gameObject.AddComponent<PauseCommand>();
-
-    // Get references to the command components
-    this.MoveLeft = this.player.GetComponent<MoveLeftCommand>();
-    this.MoveRight = this.player.GetComponent<MoveRightCommand>();
-    this.Jump = this.player.GetComponent<JumpCommand>();
-    this.MoveDown = this.player.GetComponent<MoveDownCommand>();
-    this.Pause = this.gameObject.GetComponent<PauseCommand>();
-
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-    float horizontalMovement = Input.GetAxis("Horizontal");
-    float verticalMovement = Input.GetAxis("Vertical");
-
-    if (verticalMovement > 0.01)
+    // Start is called before the first frame update
+    void Start()
     {
-      this.Jump.Execute(this.player, this.throttle);
+        Player = GameObject.FindGameObjectWithTag("Player");
+
+        // Add the necessary components to the player
+        GroundControl = Player.AddComponent<GroundControlCommand>();
+        AirControl = Player.AddComponent<AirControlCommand>();
+        GravityToggle = Player.AddComponent<GravityToggleCommand>();
+        Pause = gameObject.AddComponent<PauseCommand>();
+        
+        Physics = Player.GetComponent<PlayerPhysics>();
     }
-    if (verticalMovement < -0.01)
+
+    // Update is called once per frame
+    void Update()
     {
-      this.MoveDown.Execute(this.player, this.throttle);
+        if (!IsPaused)
+        {
+            Vector2 axes = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                GravityToggle.Execute(Player, axes, Physics);
+            }
+
+            if (Physics.GravityEnabled)
+            {
+                GroundControl.Execute(Player, axes, Physics);
+            }
+            else
+            {
+                AirControl.Execute(Player, axes, Physics);
+            }
+        }
+
+        if (Input.GetButtonDown("Pause"))
+        {
+            IsPaused = !IsPaused;
+
+            Pause.Execute(gameObject);
+        }
     }
-    if (horizontalMovement > 0.01)
-    {
-      this.MoveRight.Execute(this.player, horizontalMovement, this.throttle);
-    }
-    if (horizontalMovement < -0.01)
-    {
-      this.MoveLeft.Execute(this.player, -1 * horizontalMovement, this.throttle);
-    }
-    if (Input.GetButtonDown("Pause"))
-    {
-      this.Pause.Execute(this.gameObject, this.throttle);
-    }
-    /*if (Input.GetKey("a") || Input.GetKey("d"))
-    {
-      GetComponent<AudioSource>().Play();
-    }*/
-  }
 }

@@ -8510,6 +8510,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53a41ff157e84d389101c8303aa851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _GravEnabled: 1
+  BaseGroundMovementForce: 5
+  VelocityCap: 20
+  AntigravityDuration: 5
 --- !u!60 &454060143
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8561,11 +8565,11 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 2.3392193
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: d666ce58bd33142ca925f8faa93f3dc7, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -34539,7 +34543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63886c45394933d45b394dbb2a031f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throttle: 1
 --- !u!4 &2025209596
 Transform:
   m_ObjectHideFlags: 0
