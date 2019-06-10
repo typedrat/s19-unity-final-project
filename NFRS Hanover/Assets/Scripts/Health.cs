@@ -2,48 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     public int MaxHP = 100;
-    [SerializeField]
-    public Slider Slider;
-    public int CurrentHP;
+    [SerializeField] private Slider hp;
+    private int CurrentHP = 0;
 
     // Start is called before the first frame update
     void Start()
-    {   
-        Slider.value = MaxHP;
-        CurrentHP = MaxHP;
+    {
+        this.hp.value = this.MaxHP;
+        this.CurrentHP = this.MaxHP;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TakeDamage(int damage)
     {
         CurrentHP -= damage;
         ShowHPSlider();
-        
+
         if (CurrentHP <= 0)
         {
             CurrentHP = 0;
             Destroy(this.gameObject);
             Debug.Log("YOU DIED");
             //activate death info
-            GameObject parentObj = GameObject.Find("Main Camera");
-            GameObject DeathInfo = parentObj.transform.Find("DeathInfo").gameObject;
-            DeathInfo.SetActive(true);
+            //GameObject parentObj = GameObject.Find("Main Camera");
+            //GameObject DeathInfo = parentObj.transform.Find("DeathInfo").gameObject;
+            //DeathInfo.SetActive(true);
             //pause
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
+            Debug.Log("BEFORE LOADSCEnE");
+            SceneManager.LoadScene("GameOver");
+            Debug.Log("LOAD SCENE");
         }
     }
 
     public void ShowHPSlider()
     {
-        Slider.value = CurrentHP;
+        hp.value = CurrentHP;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
+
     void Start()
     {
 
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        //this.GetComponent<Health>().TakeDamage(10);
-        Debug.Log("OnCollisionEnter2D");
+        this.GetComponent<Health>().TakeDamage(10);
+        Debug.Log("PlayerController");
     }
 }

@@ -16,7 +16,6 @@ public class CameraController: MonoBehaviour
     // GameObject locations are finalized.
     void LateUpdate()
     {
-        Debug.Log(this.ManagedCamera.orthographicSize);
 		var targetPosition = new Vector3(this.Target.transform.position.x + 10, this.ManagedCamera.transform.position.y, this.ManagedCamera.transform.position.z);
         if(targetPosition.x < this.ManagedCamera.transform.position.x)
         {
