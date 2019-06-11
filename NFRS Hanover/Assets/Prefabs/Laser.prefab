@@ -175,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeToFire: 1.5
   Timer: 0
+  BeamCollider: {fileID: 6560564694398921045}
 --- !u!61 &7109960614505912303
 BoxCollider2D:
   m_ObjectHideFlags: 0
