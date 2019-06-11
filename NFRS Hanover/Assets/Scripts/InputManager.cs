@@ -19,6 +19,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        IsPaused = false;
         Player = GameObject.FindGameObjectWithTag("Player");
 
         // Add the necessary components to the player
@@ -58,5 +59,12 @@ public class InputManager : MonoBehaviour
 
             Pause.Execute(gameObject);
         }
+    }
+
+    public void Resume()
+    {
+        IsPaused = !IsPaused;
+
+        Pause.Execute(gameObject);
     }
 }

@@ -11,7 +11,10 @@ namespace Hanover.CommandPattern
         private GameObject UICanvas;
         private AudioSource PauseSound;
 
-        void Start() {
+        void Start()
+        {
+            currentState = GameStates.Playing;
+            Time.timeScale = 1f;
             UICanvas = GameObject.FindGameObjectWithTag("PauseMenu");
             UICanvas.SetActive(false);
             PauseSound = gameObject.GetComponent<AudioSource>();

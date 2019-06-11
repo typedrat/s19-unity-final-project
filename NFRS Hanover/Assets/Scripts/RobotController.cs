@@ -20,5 +20,14 @@ public class RobotController : MonoBehaviour
         animator.SetFloat("Random", rnd.Next(0,12));
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            var health = collision.gameObject.GetComponentInChildren<Health>();
+            health.TakeDamage(10);
+        }
+    }
+
     
 }
