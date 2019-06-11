@@ -53,9 +53,23 @@ The trickiest part was finding free assets at all. Because of this, the visual s
 
 ## Input
 
-**Describe the default input configuration.**
+* *Overall Input System* - The entire input system has been abstracted using the Command Pattern as shown in project 1. This abstraction was done in order to allow for more general input mapping, so that the inputs wouldn’t have any dependencies on the attached scripts, allowing the physics / movement systems to be altered however the programmer in charge felt necessary without interfering with the Input Manager itself. In addition, this abstraction was done to make it simpler to add new input if needed, and to allow quick and easy changes to the input control scheme / overall configuration.[https://github.com/typedrat/s19-unity-final-project/blob/cf39afa1ea6fdfe321f9935d644f8792ed3599c0/NFRS%20Hanover/Assets/Scripts/InputManager.cs#L5]
 
-**Add an entry for each platform or input style your project supports.**
+* *Keyboard/Mouse Configuration* - The default input configuration is using keyboard/mouse. While all the inputs can be easily remapped using the unity controls menu when starting a unity game, the default controls are as follows:
+- wasd or arrow keys for horizontal and vertical movement (vertical movement is only possible when in antigravity mode)
+- Space to toggle antigravity mode
+- Escape to pause / unpause the game
+- Mouse for maneuvering around menus, and left click to select
+
+* *Controller Configuration* - The game is also playable using a controller as input. Again, the inputs can be remapped using the unity controls menu, but the default controls are as follows:
+Left joystick for movement (vertical movement only possible when in antigravity mode)
+A or X (depending on Xbox vs Playstation controller) to toggle antigravity mode
+Start or Options (depending on Xbox vs Playstation controller) to pause / unpause the game
+Left joystick for maneuvering around menus, and X or Square to select a menu option (depending on Xbox vs Playstation controller)
+In addition, the way I set up the command pattern in my Input Manager allows for horizontal and vertical axes to be given to the abstracted movement scripts to allow for more precise controls when using a controller as input  (i.e. push gently right on the left stick to move slowly right). Whether or not full precision is utilized is up to the movement system.
+
+* *Interaction with UI* - The UI was simple to interact with using the mouse, as Unity has that set up by default, but there was a little tweaking needed for arrow key / controller input. Specifically I had to manually change the event system for the canvas and the navigation for the buttons to work properly with a controller. Without the change, the controller wasn’t able to select any options from any menu, instead requiring the mouse as input. This was necessary since I wanted controllers to be a viable input configuration.
+
 
 ## Game Logic
 
@@ -102,4 +116,11 @@ The trickiest part was finding free assets at all. Because of this, the visual s
 
 ## Game Feel
 
-**Document what you added to and how you tweaked your game to improve its game feel.**
+* *Impact Visuals* - When you took damage from an enemy or obstacle, I felt like there wasn’t enough of a visual or tangible “oomph” to the hit, so I added some extra effects to give it that extra push. First, I added a screenshake. My goal was to make the shake  noticeable, so you can “feel” the impact of the hit, but not overwhelming, as many games use screenshake far too generously. Secondly, I added a small pause to the game right when you’re hit. This is very short and much less noticeable unless you are looking for it, but it still adds to the feeling of weight behind the impact.
+
+* *Invulnerability Period* - Also when taking damage, the player could continue getting damaged, which made the game less enjoyable, so I added a period of invulnerability after taking damage. To give a visual aide that the player was in fact invulnerable during this period, I made the mouse flash red continuously during the period. I also increased the transparency of the mouse, which is a common way to show invulnerability in games, and should indicate the mouse’s invulnerability to players who have seen this convention before.
+
+* *Antigravity toggle visual* - I had some trouble knowing exactly when the mouse changed to or from antigravity mode, so I added a very short and small scale screenshake, just enough to give the player some visual clue that antigravity mode had been toggled on or off.
+
+* *Health Pickups*- The mouse could only get damaged from the objects in the game, and I felt like it was missing something visually in game, some sort of helper or something to collect, so I added in health pickups. To keep with the overall visual and narrative style of the game, I made these pickups cheese. 
+
