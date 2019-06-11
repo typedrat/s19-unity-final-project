@@ -35,10 +35,11 @@ You should replay any **bold text** with your own relevant information. Liberall
 ## Animation and Visuals
 * Laser flea - https://ismartal.itch.io/2d-animated-monster-character-laser-flea?download
 * Asteroid - https://handsomeunicorn.itch.io/meteoroid-sprite
-* Lasers - https://ollieberzs.itch.io/industrial-pack
+* Lasers and pipes- https://ollieberzs.itch.io/industrial-pack
 * Stars and space - https://assetstore.unity.com/packages/2d/textures-materials/dynamic-space-background-lite-104606
 * Smiling spaceship - https://opengameart.org/content/smiling-spaceship-game-character
 * Escape ship - https://opengameart.org/content/spaceship-sprite-8-directions-64x64
+* Yellow robot - https://www.gameart2d.com/the-robot---free-sprites.html
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
