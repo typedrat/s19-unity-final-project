@@ -64,11 +64,20 @@ The trickiest part was finding free assets at all. Because of this, the visual s
 
 ## Audio
 
-**List your assets including their sources, and licenses.**
+* Main Menu - https://opengameart.org/content/endgame-singularity (awakening.ogg)
+* Main Scene - https://opengameart.org/content/endgame-singularity (inevitable.ogg)
+* Win Scene - https://opengameart.org/content/endgame-singularity (win.ogg)
+* Lose Scene - https://opengameart.org/content/endgame-singularity (lose.ogg)
+* Flea Sound - https://opengameart.org/content/monster-1
+* Button Sound - https://opengameart.org/content/select-1
+* Rat Walking - https://www.youtube.com/watch?v=ubrwgRni3Ro (used for non-profit and sound is very subtle)
 
-**Describe the implementation of your audio system.**
+* Implementing the audio system was not the hardest part of this subrole. The hardest part was finding good audio sources that were free and open source that fit our needs. The reason being is that we were going for a retro game feel and finding specific retro sounds such as the ones we were looking for were rather hard. That being said, there was more research in my part than anything.
+* As for implementation, there was no crazy scripts that I needed to write as our game was rather simple and we had multiple scenes. The way the game was designed allowed me to add the audio sources onto the scene's camera by simply adding an audio source to it. This is not to say there wasn't any code for the audio but if there was it was rather simple. I personally did not know a lot about audio within C# scripts, but my group members helped me out to add sound to the rat's footsteps. 
+* https://github.com/typedrat/s19-unity-final-project/blob/2374eb09a00f028b9b8142668ad2714c786abffa/NFRS%20Hanover/Assets/Scripts/PlayerPhysics.cs#L9
+* https://github.com/typedrat/s19-unity-final-project/blob/2374eb09a00f028b9b8142668ad2714c786abffa/NFRS%20Hanover/Assets/Scripts/PlayerPhysics.cs#L70
 
-**Document the sound style.** 
+* As for sound style I believe I was able to achieve the 8/16bit feel that we were going for. I originally had different audio files but got feedback from my group members to see what they thought. They felt that it was lacking so they gave me some suggestions. With these suggestions I came across endgame-singularity and we agreed that it was a good fit to what we were looking for. 
 
 ## Gameplay Testing
 
