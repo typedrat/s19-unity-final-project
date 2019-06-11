@@ -7,6 +7,7 @@ public class PlayerFlashing : MonoBehaviour
 
     private bool isFlashing = false;
     private bool isRed = false;
+    private float duration;
 
     void Update()
     {
@@ -39,12 +40,16 @@ public class PlayerFlashing : MonoBehaviour
     public void StartFlashing()
     {
         isFlashing = true;
+        Color color = this.GetComponent<SpriteRenderer>().color;
+        color.a = .4f;
+        this.GetComponent<SpriteRenderer>().color = color;
     }
 
     public void StopFlashing()
     {
         isFlashing = false;
         var color = this.GetComponent<SpriteRenderer>().color;
+        color.a = 1f;
         color.g = 1f;
         color.b = 1f;
         this.GetComponent<SpriteRenderer>().color = color;
