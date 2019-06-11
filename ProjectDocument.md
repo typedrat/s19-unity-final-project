@@ -56,16 +56,16 @@ The trickiest part was finding free assets at all. Because of this, the visual s
 * *Overall Input System* - The entire input system has been abstracted using the Command Pattern as shown in project 1. This abstraction was done in order to allow for more general input mapping, so that the inputs wouldn’t have any dependencies on the attached scripts, allowing the physics / movement systems to be altered however the programmer in charge felt necessary without interfering with the Input Manager itself. In addition, this abstraction was done to make it simpler to add new input if needed, and to allow quick and easy changes to the input control scheme / overall configuration.[https://github.com/typedrat/s19-unity-final-project/blob/cf39afa1ea6fdfe321f9935d644f8792ed3599c0/NFRS%20Hanover/Assets/Scripts/InputManager.cs#L5]
 
 * *Keyboard/Mouse Configuration* - The default input configuration is using keyboard/mouse. While all the inputs can be easily remapped using the unity controls menu when starting a unity game, the default controls are as follows:
-- wasd or arrow keys for horizontal and vertical movement (vertical movement is only possible when in antigravity mode)
-- Space to toggle antigravity mode
-- Escape to pause / unpause the game
-- Mouse for maneuvering around menus, and left click to select
+  * wasd or arrow keys for horizontal and vertical movement (vertical movement is only possible when in antigravity mode)
+  * Space to toggle antigravity mode
+  * Escape to pause / unpause the game
+  * Mouse for maneuvering around menus, and left click to select
 
 * *Controller Configuration* - The game is also playable using a controller as input. Again, the inputs can be remapped using the unity controls menu, but the default controls are as follows:
-Left joystick for movement (vertical movement only possible when in antigravity mode)
-A or X (depending on Xbox vs Playstation controller) to toggle antigravity mode
-Start or Options (depending on Xbox vs Playstation controller) to pause / unpause the game
-Left joystick for maneuvering around menus, and X or Square to select a menu option (depending on Xbox vs Playstation controller)
+  * Left joystick for movement (vertical movement only possible when in antigravity mode)
+  * A or X (depending on Xbox vs Playstation controller) to toggle antigravity mode
+  * Start or Options (depending on Xbox vs Playstation controller) to pause / unpause the game
+  * Left joystick for maneuvering around menus, and X or Square to select a menu option (depending on Xbox vs Playstation controller)
 In addition, the way I set up the command pattern in my Input Manager allows for horizontal and vertical axes to be given to the abstracted movement scripts to allow for more precise controls when using a controller as input  (i.e. push gently right on the left stick to move slowly right). Whether or not full precision is utilized is up to the movement system.
 
 * *Interaction with UI* - The UI was simple to interact with using the mouse, as Unity has that set up by default, but there was a little tweaking needed for arrow key / controller input. Specifically I had to manually change the event system for the canvas and the navigation for the buttons to work properly with a controller. Without the change, the controller wasn’t able to select any options from any menu, instead requiring the mouse as input. This was necessary since I wanted controllers to be a viable input configuration.
