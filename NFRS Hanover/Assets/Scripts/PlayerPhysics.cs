@@ -8,6 +8,7 @@ namespace Hanover.Physics
     {
         private Rigidbody2D Physics;
         private SpriteRenderer Renderer;
+        private AudioSource Audio;
 
         [SerializeField]
         private bool _GravEnabled = true;
@@ -44,7 +45,7 @@ namespace Hanover.Physics
         public float Speed {
             get
             {
-                if (_GravEnabled)
+                if (GravityEnabled)
                 {
                     return Physics.velocity.magnitude;
                 }
@@ -66,17 +67,23 @@ namespace Hanover.Physics
         {
             Physics = gameObject.GetComponent<Rigidbody2D>();
             Renderer = gameObject.GetComponent<SpriteRenderer>();
+            Audio = gameObject.GetComponent<AudioSource>();
             VelocityCap = InitialVelocityCap;
         }
 
         void Update()
         {
-            if (Physics.velocity.magnitude > VelocityCap)
+            float velocityMag = Physics.velocity.magnitude;
+            Debug.LogFormat("rat speed: {0}", Physics.velocity);
+
+            if (velocityMag > VelocityCap)
             {
                 Physics.velocity = Physics.velocity.normalized * VelocityCap;
             }
 
             Renderer.flipX = Physics.velocity.x > 0.0f;
+
+            Audio.mute = !(GravityEnabled && velocityMag > 1.0f);
         }
 
         public void GroundControl(Vector2 axes)
