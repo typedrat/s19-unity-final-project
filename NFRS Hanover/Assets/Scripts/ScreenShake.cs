@@ -8,7 +8,9 @@ public class ScreenShake : MonoBehaviour
     //Shake effect variables ////
     private Transform c_Transform;
     [SerializeField] private float shakeDuration = 0f;
-    [SerializeField] private float shakeStrength = .5f;
+    [SerializeField] private float shakeStrength = .2f;
+    [SerializeField] private float smallShakeStrength = .05f;
+    private float currentShakeStrength;
     [SerializeField] private float dampening = 1.0f;
     Vector3 initPos;
 
@@ -26,7 +28,7 @@ public class ScreenShake : MonoBehaviour
     {
         if (shakeDuration > 0)
         {
-            transform.localPosition = initPos + Random.insideUnitSphere * shakeStrength;
+            transform.localPosition = initPos + Random.insideUnitSphere * currentShakeStrength;
 
             shakeDuration -= Time.deltaTime * dampening;
         }
@@ -39,7 +41,13 @@ public class ScreenShake : MonoBehaviour
 
     public void Shake(float val)
     {
-        Debug.Log("Shaking");
+        currentShakeStrength = shakeStrength;
+        shakeDuration = val;
+    }
+
+    public void SmallShake(float val)
+    {
+        currentShakeStrength = smallShakeStrength;
         shakeDuration = val;
     }
 }

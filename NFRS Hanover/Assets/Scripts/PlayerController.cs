@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
                 isPaused = false;
                 Time.timeScale = 1f;
                 currentPauseTime = 0f;
+                Color color = this.GetComponent<SpriteRenderer>().color;
+                color.a = .4f;
+                color.g = 1f;
+                color.b = 1f;
+                this.GetComponent<SpriteRenderer>().color = color;
             }
         }
 
@@ -88,9 +93,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("OnCollisionEnter2D");
             isInvul = true;
             Color color = this.GetComponent<SpriteRenderer>().color;
-            color.a = .4f;
+            color.g = .4f;
+            color.b = .4f;
             this.GetComponent<SpriteRenderer>().color = color;
-            c_Shake.Shake(.2f);
+            c_Shake.Shake(.25f);
 
             isPaused = true;
             Time.timeScale = 0f;
