@@ -9,10 +9,12 @@ namespace Hanover.CommandPattern
 
         private GameStates currentState = GameStates.Playing;
         private GameObject UICanvas;
+        private AudioSource PauseSound;
 
         void Start() {
             UICanvas = GameObject.FindGameObjectWithTag("UI");
             UICanvas.SetActive(false);
+            PauseSound = gameObject.GetComponent<AudioSource>();
         }
 
         public GameStates GetCurrentState()
@@ -22,6 +24,8 @@ namespace Hanover.CommandPattern
 
         public void Execute(GameObject gameObject)
         {
+            PauseSound.Play();
+
             switch(currentState) {
                 case GameStates.Playing:
                     Time.timeScale = 0f;

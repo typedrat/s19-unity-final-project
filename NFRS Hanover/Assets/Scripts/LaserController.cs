@@ -4,18 +4,45 @@ using UnityEngine;
 
 public class LaserController : MonoBehaviour
 {
-    private System.Random rnd;
-    [SerializeField] private int seed = 0;
-    // Start is called before the first frame update
+    [SerializeField]
+    private float TimeToFire = 1.5f, Timer = 0f;
+
+    private AudioSource Audio;
+    private Animator Animator;
+    private bool Enabled = false;
+
     void Start()
     {
-        rnd = new System.Random(seed);
+        Audio = this.gameObject.GetComponent<AudioSource>();
+        Animator = this.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        var animator = this.gameObject.GetComponent<Animator>();
-        animator.SetFloat("Random", rnd.Next(0,64));
+        if (!Enabled)
+        {
+            return;
+        }
+
+        Timer += Time.deltaTime;
+
+        if (Timer >= TimeToFire)
+        {
+            Debug.Log("Firing laser");
+            Timer = 0;
+            Audio.Play();
+            Animator.SetTrigger("Fire");
+        }
+    }
+
+    private void OnBecameVisible()
+    {
+        Enabled = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        Enabled = false;
     }
 }
