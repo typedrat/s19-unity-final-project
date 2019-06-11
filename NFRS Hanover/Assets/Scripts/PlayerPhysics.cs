@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Hanover.Physics
 {
@@ -13,7 +11,8 @@ namespace Hanover.Physics
         [SerializeField]
         private bool _GravEnabled = true;
 
-        public bool GravityEnabled {
+        public bool GravityEnabled
+        {
             get { return _GravEnabled; }
             set
             {
@@ -42,7 +41,8 @@ namespace Hanover.Physics
         public float AntigravityDuration = 3.0f;
 
         private float _Speed;
-        public float Speed {
+        public float Speed
+        {
             get
             {
                 if (GravityEnabled)
@@ -56,7 +56,7 @@ namespace Hanover.Physics
             }
         }
 
-        private Vector2 Direction;
+        private bool AllowFootsteps = true;
 
         public void ToggleGravity()
         {
@@ -74,16 +74,15 @@ namespace Hanover.Physics
         void Update()
         {
             float velocityMag = Physics.velocity.magnitude;
-            Debug.LogFormat("rat speed: {0}", Physics.velocity);
 
             if (velocityMag > VelocityCap)
             {
                 Physics.velocity = Physics.velocity.normalized * VelocityCap;
             }
 
-            Renderer.flipX = Physics.velocity.x > 0.0f;
+            Renderer.flipX = Physics.velocity.x > -0.1f;
 
-            Audio.mute = !(GravityEnabled && velocityMag > 1.0f);
+            Audio.mute = !(AllowFootsteps && GravityEnabled && velocityMag > 1.0f);
         }
 
         public void GroundControl(Vector2 axes)
@@ -96,6 +95,24 @@ namespace Hanover.Physics
         public void AirControl(Vector2 axes)
         {
             Physics.velocity = Speed * axes.normalized;
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("LevelFloor"))
+            {
+                AllowFootsteps = true;
+                Debug.Log("started touching floor");
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("LevelFloor"))
+            {
+                AllowFootsteps = false;
+                Debug.Log("stopped touching floor");
+            }
         }
     }
 }
