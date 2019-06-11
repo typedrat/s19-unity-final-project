@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public ScreenShake c_Shake;
     public float collisionPauseTime = 0.1f;
     private bool isPaused = false;
     private float currentPauseTime = 0f;
@@ -88,6 +90,7 @@ public class PlayerController : MonoBehaviour
             Color color = this.GetComponent<SpriteRenderer>().color;
             color.a = .4f;
             this.GetComponent<SpriteRenderer>().color = color;
+            c_Shake.Shake(.2f);
 
             isPaused = true;
             Time.timeScale = 0f;

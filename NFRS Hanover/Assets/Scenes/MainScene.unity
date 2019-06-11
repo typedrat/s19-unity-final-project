@@ -8784,6 +8784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a97837a33ef02f468294c841666e292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c_Shake: {fileID: 751406318}
   collisionPauseTime: 0.1
   scoreText: {fileID: 607385386}
   score: 0
@@ -13657,6 +13658,7 @@ GameObject:
   - component: {fileID: 751406315}
   - component: {fileID: 751406314}
   - component: {fileID: 751406317}
+  - component: {fileID: 751406318}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -13741,6 +13743,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 454060138}
+--- !u!114 &751406318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751406313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd25bd7890c401a4cbee3935e8d699c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0
+  shakeStrength: 0.2
+  dampening: 1
 --- !u!1 &757930841
 GameObject:
   m_ObjectHideFlags: 0
