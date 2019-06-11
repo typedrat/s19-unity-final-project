@@ -25,11 +25,19 @@ namespace Hanover.Physics
                 {
                     gameObject.transform.rotation = Quaternion.identity;
                 }
+
+                // End tutorial speed-cap when gravity toggled for the first time.
+                if (VelocityCap == InitialVelocityCap)
+                {
+                    VelocityCap = GameplayVelocityCap;
+                    _Speed = GameplayVelocityCap;
+                }
             }
         }
 
         [SerializeField]
-        private float BaseGroundMovementForce, VelocityCap;
+        private float BaseGroundMovementForce = 5.0f, InitialVelocityCap = 5.0f, GameplayVelocityCap = 20.0f;
+        private float VelocityCap;
         public float AntigravityDuration = 3.0f;
 
         private float _Speed;
@@ -58,6 +66,7 @@ namespace Hanover.Physics
         {
             Physics = gameObject.GetComponent<Rigidbody2D>();
             Renderer = gameObject.GetComponent<SpriteRenderer>();
+            VelocityCap = InitialVelocityCap;
         }
 
         void Update()

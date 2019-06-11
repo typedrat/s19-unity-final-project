@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, 11, gameObject.transform.position.z);
         }
+
     }
 
     void OnCollisionEnter2D(Collision2D col)
