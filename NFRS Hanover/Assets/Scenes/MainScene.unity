@@ -26362,7 +26362,7 @@ MonoBehaviour:
   Laser: {fileID: 1984443828740869312, guid: e2a6dd71614d8d943b7eafe3178b286f, type: 3}
   HealthPickup: {fileID: 1350675193105955734, guid: d2ee74ebdfa727f4cad56f7278a47757,
     type: 3}
-  SpawnRate: 1
+  SpawnRate: 2
   minRandDistance: 130
 --- !u!4 &1324542945
 Transform:
