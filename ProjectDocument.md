@@ -2,14 +2,16 @@
 
 ## Summary ##
 
-**A paragraph-length pitch for your game.**
+Ratbro In Space is a simple space platformer with elements borrowed from the endless runner genre. You play as a RAT, a *R*odent *A*ntigravity *T*est, trying to escape from the space station she was raised on as an experiment after it has been invaded by aliens.
 
 ## Gameplay explanation ##
 
-**In this section, explain how the game should be played. Treat this like a manual within a game. It is encouraged to explain the button mappings and the most optimal gameplay strategy.**
+Avoid obstacles and collect cheese to progress, using a mixture of classic platforming and the antigravity power. There is a tutorial in game that provides control info, however:
 
+* WASD/Arrow keys – Navigation
+* Space – Toggle Antigravity
 
-
+An important note is that your speed is constant while in antigrav, so you need to get a running start if you want to move quickly.
 
 # Main Roles #
 
