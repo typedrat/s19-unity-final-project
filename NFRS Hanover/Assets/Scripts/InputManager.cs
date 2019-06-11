@@ -13,10 +13,10 @@ public class InputManager : MonoBehaviour
     // Player object
     private GameObject Player;
 
+    // Paused game state
     private bool IsPaused = false;
     private PlayerPhysics Physics;
 
-    // Start is called before the first frame update
     void Start()
     {
         IsPaused = false;
@@ -31,7 +31,6 @@ public class InputManager : MonoBehaviour
         Physics = Player.GetComponent<PlayerPhysics>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!IsPaused)
@@ -61,6 +60,8 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    // Public function to be used by the pause menu screen
+    //  Allows all of the pausing/input to be more unified
     public void Resume()
     {
         IsPaused = !IsPaused;
