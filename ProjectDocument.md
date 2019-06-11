@@ -66,6 +66,7 @@ The trickiest part was finding free assets at all. Because of this, the visual s
   * A or X (depending on Xbox vs Playstation controller) to toggle antigravity mode
   * Start or Options (depending on Xbox vs Playstation controller) to pause / unpause the game
   * Left joystick for maneuvering around menus, and X or Square to select a menu option (depending on Xbox vs Playstation controller)
+  
 In addition, the way I set up the command pattern in my Input Manager allows for horizontal and vertical axes to be given to the abstracted movement scripts to allow for more precise controls when using a controller as input  (i.e. push gently right on the left stick to move slowly right). Whether or not full precision is utilized is up to the movement system.
 
 * *Interaction with UI* - The UI was simple to interact with using the mouse, as Unity has that set up by default, but there was a little tweaking needed for arrow key / controller input. Specifically I had to manually change the event system for the canvas and the navigation for the buttons to work properly with a controller. Without the change, the controller wasn’t able to select any options from any menu, instead requiring the mouse as input. This was necessary since I wanted controllers to be a viable input configuration.
