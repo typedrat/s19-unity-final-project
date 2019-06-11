@@ -87,7 +87,15 @@ In addition, the way I set up the command pattern in my Input Manager allows for
 
 ## Game Logic
 
-**Document what game states and game data you managed and what design patterns you used to complete your task.**
+* I would like to preface this part of the documentation with the fact that I have never really taken any "big" roles in large programming projects like this one, since there is a lack of and I generally feel like programming skills are not as good as others. However, my group was more than willing to assist me/teach me on what was supposed to be completed within this main role. Therefore taking full credit of this role would not be fair to my fellow group members as this was a collective effort.
+
+* For the most part the game states were not too bad to keep track of. There were only a total of six game states: Main Menu, Main game state, win state, lose state and the state where the game is not running. This was managed using user input such as buttons that would start the game, quit the game or resume the game. However the win and lose state were both end states which basically means that there were no controls and the only real option the player has is to end the game bringing it to the state of not running. 
+
+* In terms of game data there were only two real pieces of data that I really had to keep track of and these were the cheese blocks which ratbro was picking up and ratbro’s health points. These two pieces of game data are in general intertwined with each other. The cheese blocks acted as a sort of health potion for the rat so that when ratbro picked it up, the health would go up. Keeping track of the health was done in the Health script:
+
+https://github.com/typedrat/s19-unity-final-project/blob/7cc1efc9fa46d5f88d890c37249fb573284cee08/NFRS%20Hanover/Assets/Scripts/Health.cs#L1-L117
+
+* The design pattern that we used was rather simple since it was just tying together different states to make one big game. This was done by connecting the main menu to the main game scene and connecting this state to the two end states. The pause menu was also added within the main game state.
 
 # Sub-Roles
 
