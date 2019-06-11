@@ -8,6 +8,7 @@ TagManager:
   - GameManager
   - LevelFloor
   - Laser
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
