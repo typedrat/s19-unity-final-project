@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -88,14 +89,12 @@ public class Health : MonoBehaviour
             if (CurrentHP <= 0)
             {
                 CurrentHP = 0;
-                Destroy(this.gameObject);
-                Debug.Log("YOU DIED");
                 //activate death info
-                GameObject parentObj = GameObject.Find("Main Camera");
-                GameObject DeathInfo = parentObj.transform.Find("DeathInfo").gameObject;
-                DeathInfo.SetActive(true);
+                //GameObject parentObj = GameObject.Find("Main Camera");
+                //GameObject DeathInfo = parentObj.transform.Find("DeathInfo").gameObject;
+                //DeathInfo.SetActive(true);
                 //pause
-                Time.timeScale = 0f;
+                SceneManager.LoadScene("GameOver");
             }
             else
             {
