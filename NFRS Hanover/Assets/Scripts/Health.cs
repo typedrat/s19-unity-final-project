@@ -70,6 +70,10 @@ public class Health : MonoBehaviour
     public void AddHealth(int health)
     {
         CurrentHP += health;
+        if (CurrentHP > MaxHP)
+        {
+            CurrentHP = MaxHP;
+        }
         ShowHPSlider();
     }
 
