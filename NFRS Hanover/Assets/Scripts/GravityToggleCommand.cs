@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GravityToggleCommand : MonoBehaviour, IPhysicsCommand
 {
+    private ScreenShake c_Shake;
+
     [SerializeField]
     private float TotalDuration = 3.0f, RechargeTime = 3.0f;
     [SerializeField]
@@ -18,6 +20,7 @@ public class GravityToggleCommand : MonoBehaviour, IPhysicsCommand
     private void Start()
     {
         PowerbarSlider = Powerbar.GetComponent<Slider>();
+        c_Shake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScreenShake>();
     }
 
     public void Execute(GameObject player, Vector2 axes, PlayerPhysics physics)
@@ -42,12 +45,14 @@ public class GravityToggleCommand : MonoBehaviour, IPhysicsCommand
 
             Powerbar.SetActive(true);
             PowerbarSlider.value = 1;
+            c_Shake.SmallShake(0.1f);
         }
         else
         {
             Physics.GravityEnabled = true;
             Active = false;
             Enabled = false;
+            c_Shake.SmallShake(0.1f);
         }
     }
 
@@ -64,6 +69,7 @@ public class GravityToggleCommand : MonoBehaviour, IPhysicsCommand
                 Active = false;
                 Enabled = false;
                 Physics.GravityEnabled = true;
+                c_Shake.SmallShake(0.1f);
             }
         }
         else if (!Enabled)
