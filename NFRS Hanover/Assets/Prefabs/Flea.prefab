@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6495724833348721212}
   - component: {fileID: 6495724833348721203}
   - component: {fileID: 6688685759890414435}
+  - component: {fileID: 3112182474136690763}
   m_Layer: 0
   m_Name: Flea
   m_TagString: Untagged
@@ -259,3 +260,16 @@ PolygonCollider2D:
       - {x: -2.5178835, y: -3.9460423}
       - {x: -1.6642457, y: -4.609983}
       - {x: -0.7157594, y: -4.2305884}
+--- !u!114 &3112182474136690763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6495724833348721215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13596383b33bac6489ab6d1b48f1d48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 0

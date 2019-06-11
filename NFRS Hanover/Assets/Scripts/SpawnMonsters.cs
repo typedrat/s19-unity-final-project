@@ -29,17 +29,21 @@ public class SpawnMonsters : MonoBehaviour
 
 
             if(this.time >= SpawnRate){
-                //var next_spawn = Random.Range(0,3);
-                var next_spawn = 2;
+                var next_spawn = Random.Range(0,2);
                 if(next_spawn == 0)
                 {
-                    Instantiate(this.Flea, this.Player.transform.position + new Vector3(Random.Range(20,100), 0, 0), Quaternion.identity);
-                    Debug.Log("FLEA");
+                    if(Random.value <= 0.5)
+                    {
+                        var flea = Instantiate(this.Flea, new Vector3(Random.Range(20,100) + this.Player.transform.position.x, 9, 0), Quaternion.identity);
+                        flea.transform.Rotate(0, 180, 180);
+                        Debug.Log("FLEA1");
+                    }
+                    else
+                    {
+                        Instantiate(this.Flea, new Vector3(Random.Range(20,100) + this.Player.transform.position.x, -1, 0), Quaternion.identity);
+                        Debug.Log("FLEA2");
+                    }
                 } else if(next_spawn == 1)
-                {
-                    Instantiate(this.Robot, this.Player.transform.position + new Vector3(Random.Range(20,100), 0, 0), Quaternion.identity);
-                    Debug.Log("ROBOT");
-                } else
                 {
                     Instantiate(this.Laser, new Vector3(Random.Range(20,100) + this.Player.transform.position.x, 7, 0), Quaternion.identity);
                     Debug.Log("LASER");
