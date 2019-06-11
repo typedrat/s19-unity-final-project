@@ -72,7 +72,7 @@ The trickiest part was finding free assets at all. Because of this, the visual s
 
 ## Gameplay Testing
 
-**Add a link to the full results of your gameplay tests.**
+[https://github.com/typedrat/s19-unity-final-project/blob/master/Player%20Observations%20-%20Sheet1.pdf]
 
 * The number one problem we had was our lack of story. Players didn't understand what was happening, we just threw them into the game at the start. I think the game trailer will help with that, but a little intro scene would have made it much better. 
 * The second biggest problem people had was the controls, saying it felt clunky and slow to repsond, but that was a characteristic of the game, so I would say acceptable. 
