@@ -5,14 +5,20 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int MaxHP = 100;
     [SerializeField]
-    public Slider Slider;
-    public int CurrentHP;
+    private int MaxHP = 100;
+    [SerializeField]
+    private Slider Slider;
+    [SerializeField]
+    private int CurrentHP;
+
+    private AudioSource Audio;
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        Audio = gameObject.GetComponent<AudioSource>();
+
         Slider.value = MaxHP;
         CurrentHP = MaxHP;
     }
@@ -27,6 +33,7 @@ public class Health : MonoBehaviour
     {
         CurrentHP -= damage;
         ShowHPSlider();
+        Audio.Play();
         
         if (CurrentHP <= 0)
         {

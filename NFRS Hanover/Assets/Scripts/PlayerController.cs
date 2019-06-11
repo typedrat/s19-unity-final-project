@@ -25,27 +25,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            if (!isInvul)
-            {
-                Debug.Log("Hit laser!");
-                Health.TakeDamage(10);
-
-                isInvul = true;
-                c_Shake.Shake(.25f);
-
-                isPaused = true;
-                Time.timeScale = 0f;
-
-                Color color = this.GetComponent<SpriteRenderer>().color;
-                color.a = .4f;
-                this.GetComponent<SpriteRenderer>().color = color;
-
-                Flashing.StartFlashing();
-            }
-        }
-
         if (isPaused)
         {
             currentPauseTime += Time.unscaledDeltaTime;
@@ -77,12 +56,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Laser"))
         {
-            Debug.Log("Hit laser!");
             if (!isInvul)
             {
-                Debug.Log("Hit laser!");
-                Health.TakeDamage(10);
-
                 isInvul = true;
                 c_Shake.Shake(.25f);
 

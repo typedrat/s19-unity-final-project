@@ -6,6 +6,8 @@ public class LaserController : MonoBehaviour
 {
     [SerializeField]
     private float TimeToFire = 1.5f, Timer = 0f;
+    [SerializeField]
+    private BoxCollider2D BeamCollider;
 
     private AudioSource Audio;
     private Animator Animator;
@@ -34,6 +36,26 @@ public class LaserController : MonoBehaviour
             Audio.Play();
             Animator.SetTrigger("Fire");
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Got hit by laser.");
+            var health = collision.gameObject.GetComponentInChildren<Health>();
+            health.TakeDamage(10);
+        }
+    }
+
+    public void EnableTrigger()
+    {
+        BeamCollider.enabled = true;
+    }
+
+    public void DisableTrigger()
+    {
+        BeamCollider.enabled = false;
     }
 
     private void OnBecameVisible()
