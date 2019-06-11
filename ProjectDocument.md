@@ -32,6 +32,18 @@ You should replay any **bold text** with your own relevant information. Liberall
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your own movement scripts that do not use the phyics system?**
 
+The game does use the physics system in part, but the way that inputs are mapped for movement is somewhat nonstandard. It uses simple force-based movement on the ground, but more complex manual velocity control for the air control, since the default physics cannot accomodate the (physically impossible) constant-speed variable-direction movement style.
+
+* [Gravity is toggleable](https://github.com/typedrat/s19-unity-final-project/blob/cf39afa1ea6fdfe321f9935d644f8792ed3599c0/NFRS%20Hanover/Assets/Scripts/PlayerPhysics.cs#L14)
+  – 
+  This part of the script handles fixing the rotation of the object, toggling gravity on and off, and storing the speed that is used for the 2D velocity-vectoring controls in the air. This doesn't directly connect to the ideas we presented in class outside of the physics manager communicating with the input system via the command pattern, but the idea came from a test I made to test different jump arcs after that particular lecture.
+* [Enemies only fire when visible](https://github.com/typedrat/s19-unity-final-project/blob/7d7eda444ab202a90dfbdd8a5a206cb9b2a30d04/NFRS%20Hanover/Assets/Scripts/LaserController.cs#L23)
+  – 
+  Not only does this save resources, it also prevents the game from quickly turning into a cacophony of sound effects. While sound effects are an important element of game feel, as we discussed in class, it is important to not overdo these things.
+* [Gravity toggle timeout and UI](https://github.com/typedrat/s19-unity-final-project/blob/19e7705e97c6a00e77ea17a7a275069c5e7129ac/NFRS%20Hanover/Assets/Scripts/GravityToggleCommand.cs#L59)
+  –
+  I also wrote the code that throttles the usage of the antigravity power, which is essential to game balance. It is a simple timer and bar, but is essential to the gameplay loop being successful. Powerful abilities make a game fun, but at the same time, they can also destroy the challenge of a game and make it into more of a chore than anything else.
+
 ## Animation and Visuals
 * Laser flea - https://ismartal.itch.io/2d-animated-monster-character-laser-flea?download
 * Asteroid - https://handsomeunicorn.itch.io/meteoroid-sprite
@@ -49,7 +61,6 @@ The trickiest part was finding free assets at all. Because of this, the visual s
 * Hard-coded world, procedurally generated enemies - The world itself is static, so there is an end to the level. There was talk of procedurally generating it, but with the time crunch it was too difficult. The enemies, however, are spawned randomly, and they are placed on the map in an immersive way (e.g. lasers will always be anchored on top, fleas will always be on the floor or ceiling) [https://github.com/typedrat/s19-unity-final-project/blob/123012d1fdd66c4fa1ca8928c3f42dd8e9df8627/NFRS%20Hanover/Assets/Scripts/SpawnMonsters.cs#L37]
 * Camera choice - For our type of game, we have a flappy-bird-esque kind of gameplay, where we dodge monsters on the map and try to get to the end. To that end, I chose to put the camera a little ahead of the player in order to make it easier to spot enemies and give the player more time to react. As a design choice, I think it makes sense for our type of game, where reaction is key (especially since in space, everything moves a bit clunkier) [https://github.com/typedrat/s19-unity-final-project/blob/123012d1fdd66c4fa1ca8928c3f42dd8e9df8627/NFRS%20Hanover/Assets/Scripts/CameraController.cs#L19]
 * Style guide - Per our storyboard person, we have a space-themed game, where a rat in trapped in space and needs to escape. I needed to find a kind of industrial, techy background to show that we were on a spaceship, but at the same time I needed to show we were in space. I chose to emphasize space more than the spaceship, so I chose a repeated metallic background with clear windows, so the player was able to see the stars and the nebula outside and get a more immersive feel. 
-
 
 ## Input
 
@@ -105,7 +116,9 @@ In addition, the way I set up the command pattern in my Input Manager allows for
 
 ## Narrative Design
 
-**oDocument how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
+* The clearest way that the narritive is communicated is through the text at the beginning of the game, which serves as both tutorial and an introduction to the (rather barebones, fitting the 16-bit-era platformer theme) story of the game.
+* The fundamental nature of a platformer in this left-to-right style lends itself to escape stories well, and the plot and gameplay were designed in tandem with each other.
+* The suggestions I made for audio design were made to further the themes of the game and get the context across without using words.
 
 ## Press Kit and Trailer
 
