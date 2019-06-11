@@ -17,12 +17,6 @@ public class Health : MonoBehaviour
         CurrentHP = MaxHP;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(int damage)
     {
         CurrentHP -= damage;
