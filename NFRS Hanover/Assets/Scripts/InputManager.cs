@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
         // Add the necessary components to the player
         GroundControl = Player.AddComponent<GroundControlCommand>();
         AirControl = Player.AddComponent<AirControlCommand>();
-        GravityToggle = Player.AddComponent<GravityToggleCommand>();
+        GravityToggle = Player.GetComponent<GravityToggleCommand>();
         Pause = gameObject.AddComponent<PauseCommand>();
         
         Physics = Player.GetComponent<PlayerPhysics>();
