@@ -39,13 +39,11 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Slider.value = CurrentHP;
 
         // invulnerability and flashing
         if (isPaused)
         {
             currentPauseTime += Time.unscaledDeltaTime;
-            Debug.Log(currentPauseTime);
             if(currentPauseTime >= collisionPauseTime)
             {
                 isPaused = false;
@@ -67,6 +65,12 @@ public class Health : MonoBehaviour
                 Flashing.StopFlashing();
             }
         }
+    }
+
+    public void AddHealth(int health)
+    {
+        CurrentHP += health;
+        ShowHPSlider();
     }
 
     public void TakeDamage(int damage)
@@ -103,6 +107,8 @@ public class Health : MonoBehaviour
 
     public void ShowHPSlider()
     {
-        Slider.value = CurrentHP;
+        Debug.Log(Slider.value);
+        Slider.value = (float)CurrentHP;
+        Debug.Log(Slider.value);
     }
 }
