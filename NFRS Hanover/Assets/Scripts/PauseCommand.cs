@@ -8,6 +8,7 @@ namespace CommandPattern
         public enum GameStates {Playing, Paused};
 
         private GameStates currentState = GameStates.Playing;
+        [SerializeField]
         private GameObject UICanvas;
 
         void Start() {
@@ -27,6 +28,7 @@ namespace CommandPattern
                     Time.timeScale = 0f;
                     currentState = GameStates.Paused;
                     UICanvas.SetActive(true);
+                    Debug.Log("pause");
                     break;
                 case GameStates.Paused:
                     Time.timeScale = 1f;
