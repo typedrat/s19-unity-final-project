@@ -30,6 +30,20 @@ You should replay any **bold text** with your own relevant information. Liberall
 
 **Describe your user interface and how it relates to gameplay. This can be done via the template.**
 
+*Main Menu* The main menu contains two buttons and a background image. I implemented a general button script to make UI more expandable which means more button can use script to inherit this script.
+NFRS Hanover/Assets/Scripts/Health.cs
+(https://github.com/typedrat/s19-unity-final-project/blob/11ad3a0ae9d47090af081951c8e4a6f5a5cc9f78/NFRS%20Hanover/Assets/Scripts/QuitScript.cs#L1)
+
+
+*Health bar* To implement hte health bar I implement the health system of the game by the way. I used the Oncollision event to call the damage function inside the health system to give damage to player and thus diminish the health bar.
+(https://github.com/typedrat/s19-unity-final-project/blob/11ad3a0ae9d47090af081951c8e4a6f5a5cc9f78/NFRS%20Hanover/Assets/Scripts/Health.cs#L1)
+
+*Gravity bar* Similar to health bar, there is also a anti-gravity bar. While gravity is break by pressing space button, the gravity bar would show the remaining gravity buff. 
+(https://github.com/typedrat/s19-unity-final-project/blob/11ad3a0ae9d47090af081951c8e4a6f5a5cc9f78/NFRS%20Hanover/Assets/Scripts/GravityToggleCommand.cs#L14)
+
+*Pause Menu* The pause menu canvas would become visible while escape button is pressed. The menu contains resume button and exit button. Which implemented in similar way with the buttons in main menu.
+(https://github.com/typedrat/s19-unity-final-project/blob/11ad3a0ae9d47090af081951c8e4a6f5a5cc9f78/NFRS%20Hanover/Assets/Scripts/PauseCommand.cs#L4)
+
 ## Movement/Physics
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your own movement scripts that do not use the phyics system?**
@@ -132,10 +146,12 @@ https://github.com/typedrat/s19-unity-final-project/blob/7cc1efc9fa46d5f88d890c3
 
 ## Press Kit and Trailer
 
-**Include links to your presskit materials and trailer.**
+Link to Press Kit Video：https://youtu.be/qLXydHmJKgQ
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
-
+* I pick this role because I used to make a lot of AMV edits and used to contribute to Fansub group. I collect all the animation elements and recorded some actual game play scene to make the video. 
+* I tried to make the video look like a trailer. So I decide to show the aethetic of game in a very short video. I picked 8-bit music as background to emphasize that the game is made to be exquisite and fun. And I especially focused on the harmony between music and visual elements. So although the video is just 20 seconds, the arrangement took a while. 
+* Adobe Premier is the software I used to implement the video. The knowledge of mask and expandable visual effects helped a lot in implementing this video.
 
 
 ## Game Feel
